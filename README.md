@@ -1,9 +1,9 @@
 ### INDECISION APP
 
-Single Page App that is build throught the course ["The Complete React Web Developer Course (with Redux) by Andrew Mead"] https://www.udemy.com/react-2nd-edition/
+Single Page App that is build throught the course ["The Complete React Web Developer Course (with Redux) by Andrew Mead"](https://www.udemy.com/react-2nd-edition/)
 
 ## Preset
-Need to install  https://nodejs.org/en/ [Node.js] with [NPM] https://www.npmjs.com/get-npm
+Need to install [Node.js](https://nodejs.org/en/)  with [NPM](https://www.npmjs.com/get-npm)
 
 ## Build the app
 - Click green "Clone or download" button. 
@@ -12,4 +12,4 @@ Need to install  https://nodejs.org/en/ [Node.js] with [NPM] https://www.npmjs.c
 - run `npm run dev-server`
 - go to localhost:8080 in your web browser :)
 
-Thanks to https://twitter.com/andrew_j_mead [Anrew Mead]  
+Thanks to [Anrew Mead](https://twitter.com/andrew_j_mead)
