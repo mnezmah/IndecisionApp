@@ -19,6 +19,14 @@ module.exports = {
                     plugins:['transform-class-properties']
                   } 
         }
+      },
+      {
+        test: /\.s?css$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader'
+        ]
       }
     ]
   },
