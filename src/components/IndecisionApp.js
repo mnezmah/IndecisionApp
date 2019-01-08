@@ -6,7 +6,7 @@ import Options from './Options';
 import OptionModal from './OptionModal';
 
 
-class IndecisionApp extends React.Component {
+export default class IndecisionApp extends React.Component {
   state =  {
     options: [],
     selectedOption: undefined
@@ -48,9 +48,9 @@ class IndecisionApp extends React.Component {
       const json = localStorage.getItem('options');
       const options = JSON.parse(json);
 
-    if(options) {
-    this.setState(()=> ({ options }));
-    }
+      if(options) {
+      this.setState(()=> ({ options }));
+      }
     } catch (error) {
       // Do nothing at all
     }
@@ -66,9 +66,6 @@ class IndecisionApp extends React.Component {
   componentWillUnmount() {
     console.log('compnentWillUnmount');
   }
-
-  
-
   render() {
     const subtitle = 'Put your life in the hands of a computer';
 
@@ -77,22 +74,24 @@ class IndecisionApp extends React.Component {
         <Header subtitle={subtitle} />
           <div className="container">
             <Action  
-            hasOptions={this.state.options.length > 0}
-            handlePick={this.handlePick} 
+              hasOptions={this.state.options.length > 0}
+              handlePick={this.handlePick} 
             />
-            <Options 
-              options={this.state.options} 
-              handleDeleteOptions={this.handleDeleteOptions}    
-              handleDeleteOption={this.handleDeleteOption}    
-            />
-            <AddOption 
-              handleAddOption={this.handleAddOption}
-            />
+            <div className="widget">
+              <Options 
+                options={this.state.options} 
+                handleDeleteOptions={this.handleDeleteOptions} 
+                handleDeleteOption={this.handleDeleteOption} 
+              />
+              <AddOption 
+                handleAddOption={this.handleAddOption}
+              />
+            </div>
           </div>
         
         <OptionModal 
           selectedOption={this.state.selectedOption}
-          handleClearselectedOption={this.handleClearSelectedOption}
+          handleClearSelectedOption={this.handleClearSelectedOption}
         />
 
       </div>
@@ -100,4 +99,3 @@ class IndecisionApp extends React.Component {
   }
 }
 
-export default IndecisionApp;
