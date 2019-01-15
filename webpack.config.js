@@ -1,7 +1,11 @@
 // entry -> output
 const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+
 module.exports = (env) =>  {
   const isProduction = env === 'production';
+  const CSSExtract = new ExtractTextPlugin('styles.css');
   console.log('env, env')
   return {
     entry: './src/app.js',
@@ -17,21 +21,25 @@ module.exports = (env) =>  {
           exclude: /node_modules/,
           use:{
             loader: 'babel-loader',
-            options:{ presets:['env','react'], 
-                      plugins:['transform-class-properties']
-                    } 
+            options:{ 
+              presets:['@babel/preset-env','@babel/preset-react'], 
+              plugins:['@babel/plugin-proposal-class-properties']
+            } 
           }
         },
         {
           test: /\.s?css$/,
-          use: [
-            'style-loader',
-            'css-loader',
-           'sass-loader'
-         ]
-        }
-      ]
+          use: CSSExtract.extract({
+            use: [
+              'css-loader', 
+              'sass-loader'
+            ]
+          }) 
+        }]
    },
+   plugins: [
+     CSSExtract
+   ],
    devtool: isProduction ? 'source-map' : 'cheap-module-source-map',
     devServer: {
       contentBase: path.join(__dirname, 'public')
